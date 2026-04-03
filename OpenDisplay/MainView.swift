@@ -527,14 +527,14 @@ struct WindowTilingTab: View {
             Text("Grid Tile All Windows").font(.caption.bold())
 
             HStack(spacing: 8) {
-                GridButton(cols: 2, rows: 1, label: "2 cols")
-                GridButton(cols: 3, rows: 1, label: "3 cols")
-                GridButton(cols: 2, rows: 2, label: "2×2")
-                GridButton(cols: 3, rows: 2, label: "3×2")
+                TileButton(icon: "rectangle.split.2x1", label: "2 cols") { tileGrid(cols: 2, rows: 1) }
+                TileButton(icon: "rectangle.split.3x1", label: "3 cols") { tileGrid(cols: 3, rows: 1) }
+                TileButton(icon: "square.grid.2x2", label: "2×2") { tileGrid(cols: 2, rows: 2) }
+                TileButton(icon: "square.grid.3x2", label: "3×2") { tileGrid(cols: 3, rows: 2) }
             }
 
             Button("Auto-tile all visible windows") {
-                tiler.tileAllVisibleWindows()
+                tileAllVisible()
             }.controlSize(.small)
 
             Divider()
@@ -581,6 +581,29 @@ struct WindowTilingTab: View {
             }
         }
         NSHapticFeedbackManager.defaultPerformer.perform(.levelChange, performanceTime: .now)
+    }
+
+    private func tileAllVisible() {
+        guard let screen = NSScreen.main?.visibleFrame else { return }
+        let apps = NSWorkspace.shared.runningApplications.filter { $0.activationPolicy == .regular }
+        var allWindows: [AXUIElement] = []
+        for app in apps {
+            let appRef = AXUIElementCreateApplication(app.processIdentifier)
+            var winsRef: CFTypeRef?
+            if AXUIElementCopyAttributeValue(appRef, kAXWindowsAttribute as CFString, &winsRef) == .success,
+               let wins = winsRef as? [AXUIElement] { allWindows.append(contentsOf: wins) }
+        }
+        guard !allWindows.isEmpty else { return }
+        let cols = Int(ceil(sqrt(Double(allWindows.count))))
+        let rows = Int(ceil(Double(allWindows.count) / Double(cols)))
+        let grid = WindowTiler.GridLayout(columns: cols, rows: rows)
+        let frames = grid.frames(in: screen, count: allWindows.count)
+        for (i, win) in allWindows.enumerated() where i < frames.count {
+            var pos = CGPoint(x: frames[i].origin.x, y: NSScreen.screens[0].frame.height - frames[i].maxY)
+            var size = CGSize(width: frames[i].width, height: frames[i].height)
+            if let pv = AXValueCreate(.cgPoint, &pos) { AXUIElementSetAttributeValue(win, kAXPositionAttribute as CFString, pv) }
+            if let sv = AXValueCreate(.cgSize, &size) { AXUIElementSetAttributeValue(win, kAXSizeAttribute as CFString, sv) }
+        }
     }
 
     /// Animate a window to a target frame in steps
