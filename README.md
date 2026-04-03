@@ -83,6 +83,7 @@ opendisplay://profile/MyProfile
 | HDMI on Apple Silicon doesn't support DDC | Connect via USB-C/Thunderbolt, or use gamma dimming fallback |
 | Some monitors have partial DDC support | Depends on monitor firmware — not all features work on all monitors |
 | Window tiling needs Accessibility permission | System Settings → Privacy & Security → Accessibility |
+| After brew upgrade, tiling may stop working | Re-add OpenDisplay to Accessibility (macOS resets permission when binary changes) |
 
 ---
 
