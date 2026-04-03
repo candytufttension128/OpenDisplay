@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenDisplay — Open Source macOS Display Manager</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', system-ui, sans-serif; background: #0a0a0f; color: #e0e0e5; line-height: 1.6; }
+        a { color: #4da6ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(180deg, #0d1b2a 0%, #0a0a0f 100%);
+        }
+        .hero img { width: 96px; border-radius: 20px; margin-bottom: 20px; }
+        .hero h1 { font-size: 48px; font-weight: 700; letter-spacing: -1px; margin-bottom: 12px; }
+        .hero h1 span { background: linear-gradient(135deg, #4da6ff, #00c9a7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 20px; color: #8a8a9a; max-width: 560px; margin: 0 auto 32px; }
+        .buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 12px 28px; border-radius: 10px; font-size: 16px; font-weight: 600; display: inline-block; transition: transform 0.2s; }
+        .btn:hover { transform: translateY(-2px); text-decoration: none; }
+        .btn-primary { background: #4da6ff; color: #000; }
+        .btn-secondary { background: #1a1a24; color: #e0e0e5; border: 1px solid #2a2a3a; }
+
+        .badges { margin-top: 24px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+        .badges img { height: 22px; }
+
+        .features {
+            max-width: 900px; margin: 0 auto; padding: 60px 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;
+        }
+        .feature {
+            background: #12121a; border: 1px solid #1e1e2e; border-radius: 14px; padding: 28px;
+            transition: border-color 0.3s;
+        }
+        .feature:hover { border-color: #4da6ff40; }
+        .feature .icon { font-size: 28px; margin-bottom: 12px; }
+        .feature h3 { font-size: 17px; margin-bottom: 6px; }
+        .feature p { font-size: 14px; color: #7a7a8a; }
+
+        .install {
+            max-width: 640px; margin: 0 auto; padding: 60px 20px; text-align: center;
+        }
+        .install h2 { font-size: 32px; margin-bottom: 24px; }
+        .code-block {
+            background: #12121a; border: 1px solid #1e1e2e; border-radius: 10px;
+            padding: 20px 24px; text-align: left; font-family: 'SF Mono', monospace;
+            font-size: 14px; color: #c0c0d0; margin-bottom: 16px; position: relative;
+        }
+        .code-block .comment { color: #5a5a6a; }
+
+        .comparison {
+            max-width: 700px; margin: 0 auto; padding: 40px 20px 60px; text-align: center;
+        }
+        .comparison h2 { font-size: 28px; margin-bottom: 24px; }
+        .comparison table { width: 100%; border-collapse: collapse; text-align: left; }
+        .comparison th { color: #7a7a8a; font-size: 13px; font-weight: 500; padding: 10px 12px; border-bottom: 1px solid #1e1e2e; }
+        .comparison td { padding: 10px 12px; font-size: 14px; border-bottom: 1px solid #1e1e2e; }
+        .comparison .check { color: #00c9a7; }
+        .comparison .cross { color: #5a5a6a; }
+
+        footer {
+            text-align: center; padding: 40px 20px; color: #5a5a6a; font-size: 13px;
+            border-top: 1px solid #1e1e2e;
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <img src="https://raw.githubusercontent.com/sahilmishra0012/OpenDisplay/main/AppIcon.iconset/icon_256x256.png" alt="OpenDisplay">
+    <h1><span>OpenDisplay</span></h1>
+    <p>Open-source macOS display manager. Control brightness, resolution, window tiling, and more. Free forever.</p>
+    <div class="buttons">
+        <a href="https://github.com/sahilmishra0012/OpenDisplay/releases/latest" class="btn btn-primary">Download</a>
+        <a href="https://github.com/sahilmishra0012/OpenDisplay" class="btn btn-secondary">GitHub</a>
+    </div>
+    <div class="badges">
+        <img src="https://img.shields.io/github/v/release/sahilmishra0012/OpenDisplay?style=flat-square&color=4da6ff" alt="Version">
+        <img src="https://img.shields.io/badge/macOS%2014+-111?style=flat-square&color=1a1a24" alt="macOS">
+        <img src="https://img.shields.io/badge/Apple%20Silicon-native-00c9a7?style=flat-square" alt="Apple Silicon">
+        <img src="https://img.shields.io/github/license/sahilmishra0012/OpenDisplay?style=flat-square&color=1a1a24" alt="MIT">
+        <img src="https://img.shields.io/github/stars/sahilmishra0012/OpenDisplay?style=flat-square&color=1a1a24" alt="Stars">
+    </div>
+</section>
+
+<section class="features">
+    <div class="feature">
+        <div class="icon">🖥</div>
+        <h3>DDC/CI Control</h3>
+        <p>Hardware brightness, contrast, volume, sharpness, input switching, and power control. Native Apple Silicon support.</p>
+    </div>
+    <div class="feature">
+        <div class="icon">🎛</div>
+        <h3>Resolution & Refresh</h3>
+        <p>Access all resolutions including hidden HiDPI modes. Quick refresh rate switching. Display arrangement editor.</p>
+    </div>
+    <div class="feature">
+        <div class="icon">🌙</div>
+        <h3>Night Shift & Dimming</h3>
+        <p>Scheduled color temperature. Gamma and overlay dimming — dim to complete black. XDR/HDR brightness unlock.</p>
+    </div>
+    <div class="feature">
+        <div class="icon">🪟</div>
+        <h3>Window Tiling</h3>
+        <p>Edge snapping, corner tiling, grid layouts. Auto-tile all windows. Right-click menu bar for quick presets.</p>
+    </div>
+    <div class="feature">
+        <div class="icon">⚡</div>
+        <h3>Automation</h3>
+        <p>Full CLI, URL scheme, display profiles with auto-apply on connect, global hotkeys, settings export/import.</p>
+    </div>
+    <div class="feature">
+        <div class="icon">🪶</div>
+        <h3>Lightweight</h3>
+        <p>Native Swift. No Electron. Under 1MB. Runs as a menu bar app with zero dock clutter.</p>
+    </div>
+</section>
+
+<section class="install">
+    <h2>Install</h2>
+    <div class="code-block">
+        <span class="comment"># Homebrew</span><br>
+        brew tap sahilmishra0012/opendisplay<br>
+        brew install --cask opendisplay
+    </div>
+    <div class="code-block">
+        <span class="comment"># Build from source</span><br>
+        git clone https://github.com/sahilmishra0012/OpenDisplay.git<br>
+        cd OpenDisplay && swift run
+    </div>
+    <p style="color: #5a5a6a; font-size: 13px; margin-top: 12px;">Or download the <a href="https://github.com/sahilmishra0012/OpenDisplay/releases/latest">DMG directly</a>.</p>
+</section>
+
+<section class="comparison">
+    <h2>Why OpenDisplay?</h2>
+    <table>
+        <tr><th>Feature</th><th>OpenDisplay</th><th>BetterDisplay</th><th>MonitorControl</th></tr>
+        <tr><td>DDC brightness/contrast/volume</td><td class="check">✓ Free</td><td class="check">✓ Free</td><td class="check">✓ Free</td></tr>
+        <tr><td>Input switching & power</td><td class="check">✓ Free</td><td class="check">✓ Free</td><td class="cross">✗</td></tr>
+        <tr><td>Window tiling</td><td class="check">✓ Free</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+        <tr><td>Night shift / color temp</td><td class="check">✓ Free</td><td class="check">✓ Free</td><td class="cross">✗</td></tr>
+        <tr><td>XDR/HDR brightness</td><td class="check">✓ Free</td><td>💰 Pro</td><td class="cross">✗</td></tr>
+        <tr><td>Display profiles</td><td class="check">✓ Free</td><td>💰 Pro</td><td class="cross">✗</td></tr>
+        <tr><td>CLI & URL scheme</td><td class="check">✓ Free</td><td class="check">✓ Free</td><td class="cross">✗</td></tr>
+        <tr><td>Ambient light sync</td><td class="check">✓ Free</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+        <tr><td>Open source</td><td class="check">✓</td><td class="cross">✗</td><td class="check">✓</td></tr>
+        <tr><td>Price</td><td><strong>Free</strong></td><td>$18 Pro</td><td>Free</td></tr>
+    </table>
+</section>
+
+<footer>
+    <p>MIT License · Built with Swift · <a href="https://github.com/sahilmishra0012/OpenDisplay">GitHub</a></p>
+</footer>
+
+</body>
+</html>
