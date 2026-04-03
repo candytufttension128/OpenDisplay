@@ -18,6 +18,18 @@
 
 ---
 
+## Screenshots
+
+<p align="center">
+  <img src="screenshots/displays.png" width="320" alt="Display Controls"/>
+  &nbsp;&nbsp;
+  <img src="screenshots/tiling.png" width="320" alt="Window Tiling"/>
+  &nbsp;&nbsp;
+  <img src="screenshots/nightshift.png" width="320" alt="Night Shift"/>
+</p>
+
+---
+
 ## Install
 
 **Homebrew**

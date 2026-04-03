@@ -22,15 +22,30 @@ struct MainView: View {
             }.padding(.horizontal).padding(.top, 12).padding(.bottom, 6)
 
             // Tabs
-            Picker("", selection: $selectedTab.animation(.easeInOut(duration: 0.2))) {
-                Text("Displays").tag(0)
-                Text("Arrange").tag(1)
-                Text("Night Shift").tag(2)
-                Text("Windows").tag(3)
-                Text("Profiles").tag(4)
-                Text("Settings").tag(5)
+            HStack(spacing: 2) {
+                ForEach(Array([
+                    ("display", "Displays"),
+                    ("rectangle.on.rectangle", "Arrange"),
+                    ("moon.fill", "Night Shift"),
+                    ("rectangle.split.2x1", "Windows"),
+                    ("square.stack", "Profiles"),
+                    ("gearshape", "Settings")
+                ].enumerated()), id: \.offset) { i, item in
+                    Button(action: { withAnimation(.easeInOut(duration: 0.2)) { selectedTab = i } }) {
+                        VStack(spacing: 2) {
+                            Image(systemName: item.0).font(.system(size: 13))
+                            Text(item.1).font(.system(size: 8))
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 5)
+                        .background(selectedTab == i ? Color.accentColor.opacity(0.2) : Color.clear)
+                        .foregroundColor(selectedTab == i ? .accentColor : .secondary)
+                        .cornerRadius(6)
+                    }
+                    .buttonStyle(.plain)
+                }
             }
-            .pickerStyle(.segmented).padding(.horizontal)
+            .padding(.horizontal, 8)
 
             Divider().padding(.top, 6)
 
