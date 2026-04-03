@@ -6,7 +6,8 @@ class NightShiftScheduler: ObservableObject {
     @Published var enabled = false
     @Published var startHour = 20
     @Published var endHour = 7
-    @Published var warmthKelvin = 3400
+    @Published var warmthKelvin = 3400 { didSet { if enabled { applyNow() } } }
+    @Published var alwaysOn = false { didSet { if enabled { applyNow() } } }
 
     private var timer: Timer?
     private let dimmer = GammaDimmer()
@@ -15,19 +16,25 @@ class NightShiftScheduler: ObservableObject {
     func start(displays: [UInt32]) {
         activeDisplays = displays; enabled = true
         timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in self?.evaluate() }
-        evaluate()
+        applyNow()
     }
 
     func stop() {
         enabled = false; timer?.invalidate(); timer = nil; dimmer.resetAll()
     }
 
-    private func evaluate() {
-        let hour = Calendar.current.component(.hour, from: Date())
-        let warm = hour >= startHour || hour < endHour
+    func applyNow() {
+        let shouldWarm = alwaysOn || isWithinSchedule()
         for id in activeDisplays {
-            if warm { dimmer.setColorTemperature(warmthKelvin, for: id) }
+            if shouldWarm { dimmer.setColorTemperature(warmthKelvin, for: id) }
             else { dimmer.resetGamma(for: id) }
         }
+    }
+
+    private func evaluate() { applyNow() }
+
+    private func isWithinSchedule() -> Bool {
+        let hour = Calendar.current.component(.hour, from: Date())
+        return hour >= startHour || hour < endHour
     }
 }

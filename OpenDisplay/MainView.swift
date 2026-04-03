@@ -395,18 +395,24 @@ struct NightShiftTab: View {
                 }
             ))
 
-            HStack {
-                Text("Start").frame(width: 40)
-                Picker("", selection: $scheduler.startHour) {
-                    ForEach(0..<24, id: \.self) { h in Text("\(h):00").tag(h) }
+            Toggle("Always on (ignore schedule)", isOn: $scheduler.alwaysOn)
+                .disabled(!scheduler.enabled)
+
+            if !scheduler.alwaysOn {
+                HStack {
+                    Text("Start").frame(width: 40)
+                    Picker("", selection: $scheduler.startHour) {
+                        ForEach(0..<24, id: \.self) { h in Text("\(h):00").tag(h) }
+                    }
+                }
+                HStack {
+                    Text("End").frame(width: 40)
+                    Picker("", selection: $scheduler.endHour) {
+                        ForEach(0..<24, id: \.self) { h in Text("\(h):00").tag(h) }
+                    }
                 }
             }
-            HStack {
-                Text("End").frame(width: 40)
-                Picker("", selection: $scheduler.endHour) {
-                    ForEach(0..<24, id: \.self) { h in Text("\(h):00").tag(h) }
-                }
-            }
+
             HStack {
                 Text("Warmth")
                 Slider(value: .init(get: { Double(scheduler.warmthKelvin) },
