@@ -171,7 +171,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             statusItem?.button?.title = ""
             return
         }
-        DispatchQueue.main.async { self.statusItem?.button?.title = " \(b.current)%" }
+        DispatchQueue.main.async { self.statusItem?.button?.title = "" }
     }
 
     // MARK: - URL scheme
