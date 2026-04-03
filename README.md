@@ -90,6 +90,12 @@ opendisplay://profile/MyProfile
 
 PRs welcome! Some ideas: virtual displays, keyboard shortcut config UI, LG webOS TV control, Picture-in-Picture, localization.
 
+## Support
+
+If OpenDisplay is useful to you, consider buying me a coffee ☕
+
+<a href="https://buymeacoffee.com/sahilmishra"><img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me A Coffee"></a>
+
 ## License
 
 [MIT](LICENSE)
