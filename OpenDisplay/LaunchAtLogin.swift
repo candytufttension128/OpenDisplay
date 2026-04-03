@@ -10,6 +10,12 @@ class LaunchAtLogin: ObservableObject {
     }
 
     init() {
+        // Default to enabled on first launch
+        let hasLaunched = UserDefaults.standard.bool(forKey: "OpenDisplay.hasLaunchedBefore")
+        if !hasLaunched {
+            try? SMAppService.mainApp.register()
+            UserDefaults.standard.set(true, forKey: "OpenDisplay.hasLaunchedBefore")
+        }
         isEnabled = SMAppService.mainApp.status == .enabled
     }
 
